@@ -1,1 +1,5 @@
 /dataset
+.env
+.env.*
+!.env.example
+impementation.md
