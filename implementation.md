@@ -34,15 +34,16 @@ Proyek berisi `main.ipynb` dan enam CSV sumber yang disebut prompt (termasuk sam
 - [x] Tambahkan genre/rating metadata ke fitur; validasi LightGBM membaik dari MASE 0,4692 menjadi 0,4528, namun baseline tetap lebih baik.
 
 ### Tahap 6 — Reprodusibilitas & dokumentasi
-- [x] Sediakan skrip pipeline dan dokumentasi dependency/urutan eksekusi.
+- [x] Sediakan implementasi pipeline dan dokumentasi dependency/urutan eksekusi; versi dependency ditulis langsung di cell pertama notebook.
 - [x] Rapikan notebook dengan alur data acquisition, preprocessing/QA, EDA, feature engineering, modeling, evaluation.
-- [x] Restart Kernel & Run All dari kondisi bersih; dependency terpasang dari `requirements.txt`, pipeline notebook berhasil sampai akhir.
+- [x] Pindahkan implementasi pipeline ke sel notebook; akuisisi TMDB tersedia sebagai fungsi opsional dan Run All default memakai file metadata lokal.
+- [ ] Restart Kernel & Run All setelah pemindahan kode (sintaks sel baru sudah dikompilasi; notebook sengaja belum dieksekusi ulang agar pengguna dapat menjalankannya sendiri).
 
-## Blockers
+## Blockers  
 
 - **Metadata eksternal:** selesai. Kredensial TMDB berhasil dipakai. `.env` telah ditambahkan ke `.gitignore`; skrip tidak menampilkan atau menulis credential.
 - **Validasi tanggal rilis:** sumber film train tidak menyediakan tanggal rilis, jadi split sesuai instruksi “rilis paling akhir” tidak dapat dibuat. Pipeline memakai tujuh observasi terbaru per pasangan sebagai validasi temporal. Dari 23 pasangan historis berskala 1, hanya satu masuk ke pasangan target test dan label test tidak tersedia untuk menghitung skornya.
-- **Eksekusi notebook final:** selesai. Cell dependency memasang paket versi terpin; `data/feature_table.parquet` tersedia. Ada peringatan joblib/WMIC saat estimasi core, tetapi notebook dan pipeline selesai.
+- **Eksekusi notebook sebelum pemindahan kode:** berhasil. Setelah pemindahan, sel pipeline lolos pemeriksaan sintaks tetapi Run All perlu dilakukan ulang untuk memvalidasi versi notebook yang sekarang.
 
 ## Catatan asal skor MASE
 

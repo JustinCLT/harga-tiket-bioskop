@@ -188,6 +188,8 @@ def main():
     # Train on earlier observations only. Per-pair preceding three tickets define
     # each sample's scale; validation rows stay outside model fitting.
     try:
+        # Avoid joblib probing Windows physical cores through deprecated WMIC.
+        os.environ.setdefault("LOKY_MAX_CPU_COUNT", str(os.cpu_count() or 1))
         from lightgbm import LGBMRegressor
         prices=load("ticket_prices")
         holidays=load("holidays"); holidays["date"]=pd.to_datetime(holidays.date)
