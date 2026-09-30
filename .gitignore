@@ -1,5 +1,5 @@
-/dataset
-.env
-.env.*
-!.env.example
-implementation.md
+# Git tracks only this file and main.ipynb. Submission ZIPs are prepared separately;
+# include the notebook plus every competition-required external data/model artifact.
+*
+!.gitignore
+!main.ipynb
