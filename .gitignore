@@ -2,5 +2,5 @@
 # include the notebook plus every competition-required external data/model artifact.
 *
 !.gitignore
-!main.ipynb
+!oldnotebook.ipynb
 !main-2.ipynb
